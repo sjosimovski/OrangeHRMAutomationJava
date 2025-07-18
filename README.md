@@ -55,7 +55,7 @@ This is a Selenium WebDriver automation framework built with **Java**, **Cucumbe
 
 ## Test Result Screenshot
 
-![Test Result](Images/testresult.png)
+![Test Result](Images/testresult.PNG)
 
 ## Author
 
