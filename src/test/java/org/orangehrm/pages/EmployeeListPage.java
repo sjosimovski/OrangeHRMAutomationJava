@@ -34,19 +34,29 @@ public class EmployeeListPage extends BasePage {
     public boolean isEmployeeFound(String expectedId, String expectedFirstName, String expectedLastName) {
         waitForVisibility(tableResults);
         waitForVisibility(tableRows);
-        List<WebElement> rows = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(tableRows));
 
-        for (WebElement row : rows) {
-            String actualId = row.findElement(employeeIdCellRelative).getText().trim();
-            String actualFirstName = row.findElement(firstNameCellRelative).getText().trim();
-            String actualLastName = row.findElement(lastNameCellRelative).getText().trim();
+        int retryCount = 3;
+        while (retryCount > 0) {
+            try {
+                List<WebElement> rows = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(tableRows));
+                for (WebElement row : rows) {
+                    // locate each cell
+                    String actualId = row.findElement(employeeIdCellRelative).getText().trim();
+                    String actualFirstName = row.findElement(firstNameCellRelative).getText().trim();
+                    String actualLastName = row.findElement(lastNameCellRelative).getText().trim();
 
-            if (actualId.equals(expectedId)
-                    && actualFirstName.equalsIgnoreCase(expectedFirstName)
-                    && actualLastName.equalsIgnoreCase(expectedLastName)) {
-                return true;
+                    if (actualId.equals(expectedId)
+                            && actualFirstName.equalsIgnoreCase(expectedFirstName)
+                            && actualLastName.equalsIgnoreCase(expectedLastName)) {
+                        return true;
+                    }
+                }
+                return false; // Not found
+            } catch (org.openqa.selenium.StaleElementReferenceException e) {
+                retryCount--;
             }
         }
-            return false;
+        return false;
     }
+
 }
