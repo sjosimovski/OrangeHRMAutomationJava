@@ -19,15 +19,16 @@ This is a Selenium WebDriver automation framework built with **Java**, **Cucumbe
 
 src/
 ├── test/
-│ ├── java/
-│ │ └── org/orangehrm/
-│ │ ├── pages/ # Page Object classes
-│ │ ├── hooks/ # Cucumber hooks (driver setup & teardown)
-│ │ ├── context/ # TestContext for shared state
-│ │ ├── runner/ # TestRunner class
-│ │ └── stepdefinitions/ # Step Definitions
-│ └── resources/
-│ └── features/ # Cucumber .feature files
+│   ├── java/
+│   │   └── org/orangehrm/
+│   │       ├── pages/            # Page Object classes
+│   │       ├── hooks/            # Cucumber hooks (driver setup & teardown)
+│   │       ├── context/          # TestContext for shared state
+│   │       ├── runner/           # TestRunner class
+│   │       └── stepdefinitions/  # Step Definitions
+│   └── resources/
+│       └── features/             # Cucumber .feature files
+
 
 
 ## Features
